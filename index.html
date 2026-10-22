@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brett's Corner Spaza Shop</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  body{
+    background-image: linear-gradient(rgba(10,15,25,0.72), rgba(10,15,25,0.72)),
+                       url("image_of_shop.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-bottom: 40px;
+    color: #fff;
+  }
+
+  header.shop-header{
+    text-align:center;
+    padding:30px 16px 20px;
+  }
+  header.shop-header img{
+    max-width:280px;
+    width:100%;
+    height:auto;
+    margin-bottom:10px;
+  }
+
+  .card{
+    background:rgba(255,255,255,0.96);
+    color:#111;
+  }
+
+  .product-img{
+    width:100%;height:px;object-fit:cover;
+    transition:transform .3s ease;
+  }
+  .product-img:hover{transform:scale(1.06);}
+
+  section.category{margin-bottom:48px;}
+  section.category h3{
+    display:inline-block;
+    background:#1e2a3a;
+    padding:6px 18px;
+    border-radius:6px;
+    border-left:4px solid #f2b632;
+    margin-bottom:16px;
+  }
+
+  .card:target{
+    outline:4px solid #28a745;
+    outline-offset:2px;
+  }
+  .card{scroll-margin-top:16px;}
+
+  .qty-input{max-width:90px;margin:8px auto 0;}
+
+  #search-bar{text-align:center;margin-bottom:34px;}
+  .dropdown-menu{max-height:340px;overflow-y:auto;}
+
+  footer.shop-footer{
+    background:#1e2a3a;color:#fff;padding:24px;border-radius:10px;
+    display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;
+  }
+  footer.shop-footer img{width:70px;height:auto;flex-shrink:0;}
+  footer.shop-footer form{display:flex;flex-wrap:wrap;gap:10px;align-items:center;flex:1;}
+  footer.shop-footer .form-control{max-width:180px;}
+  footer.shop-footer .copyright{width:100%;text-align:center;font-size:0.8rem;color:#9fb0c4;margin-top:16px;}
+</style>
+</head>
+<body>
+
+<header class="shop-header">
+  <img src="Spaza_shop_logo.jpeg" alt="Brett's Corner Spaza Shop logo">
+  <h1>Brett's Corner Spaza Shop</h1>
+  <p class="text-white-50">Your Local One Stop Spot!</p>
+</header>
+
+<div id="search-bar">
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+      🔍 Find a product
+    </button>
+    <ul class="dropdown-menu">
+
+      <li><h6 class="dropdown-header">Airtime, Data &amp; Vouchers</h6></li>
+      <li><a class="dropdown-item" href="#vodacom">Vodacom Airtime &amp; Data</a></li>
+      <li><a class="dropdown-item" href="#mtn">MTN Airtime &amp; Data</a></li>
+      <li><a class="dropdown-item" href="#cellc">Cell C Airtime &amp; Data</a></li>
+      <li><a class="dropdown-item" href="#telkom">Telkom Airtime &amp; Data</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Beverages</h6></li>
+      <li><a class="dropdown-item" href="#coke-330">Coke 330ml</a></li>
+      <li><a class="dropdown-item" href="#coke-2l">Coke 2L</a></li>
+      <li><a class="dropdown-item" href="#fanta-330">Fanta 330ml</a></li>
+      <li><a class="dropdown-item" href="#fanta-1l">Fanta 1L</a></li>
+      <li><a class="dropdown-item" href="#jive-15l">Jive 1.5L</a></li>
+      <li><a class="dropdown-item" href="#jive-2l">Jive 2L</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Coffee &amp; Tea</h6></li>
+      <li><a class="dropdown-item" href="#ricoffy">Ricoffy 250g</a></li>
+      <li><a class="dropdown-item" href="#jacobs">Jacobs Kronung 200g</a></li>
+      <li><a class="dropdown-item" href="#freshpak">Freshpak Tea (100s)</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Deli</h6></li>
+      <li><a class="dropdown-item" href="#polony">Polony 250g</a></li>
+      <li><a class="dropdown-item" href="#cheese">Cheese Slices 200g</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Canned Food</h6></li>
+      <li><a class="dropdown-item" href="#baked-beans">Baked Beans 410g</a></li>
+      <li><a class="dropdown-item" href="#pilchards">Pilchards 400g</a></li>
+      <li><a class="dropdown-item" href="#corned-meat">Corned Meat 300g</a></li>
+      <li><a class="dropdown-item" href="#sweetcorn">Sweetcorn 410g</a></li>
+      <li><a class="dropdown-item" href="#tom-onion">Tomato &amp; Onion Mix 410g</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Fruit &amp; Veg</h6></li>
+      <li><a class="dropdown-item" href="#potatoes">Potatoes 2kg</a></li>
+      <li><a class="dropdown-item" href="#tomatoes">Tomatoes 1kg</a></li>
+      <li><a class="dropdown-item" href="#apples">Apples 1kg</a></li>
+      <li><a class="dropdown-item" href="#lemons">Lemons</a></li>
+      <li><a class="dropdown-item" href="#oranges">Oranges 1kg</a></li>
+      <li><a class="dropdown-item" href="#avocado">Avocado</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Health Care</h6></li>
+      <li><a class="dropdown-item" href="#plasters">Plasters (20)</a></li>
+      <li><a class="dropdown-item" href="#grandpa">Grandpa Powders (10s)</a></li>
+      <li><a class="dropdown-item" href="#panado">Panado Tablets (24s)</a></li>
+      <li><a class="dropdown-item" href="#rennies">Rennies (Heartburn)</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Household Cleaning</h6></li>
+      <li><a class="dropdown-item" href="#sunlight">Sunlight Dishwashing Liquid</a></li>
+      <li><a class="dropdown-item" href="#handy-andy">Handy Andy 750ml</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Pets</h6></li>
+      <li><a class="dropdown-item" href="#dog-food">Dog Food 2kg</a></li>
+      <li><a class="dropdown-item" href="#cat-food">Cat Food 1.2kg</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Toiletries</h6></li>
+      <li><a class="dropdown-item" href="#soap">Soap Bar</a></li>
+      <li><a class="dropdown-item" href="#face-cloth">Face Cloth</a></li>
+      <li><a class="dropdown-item" href="#toothbrush">Toothbrush</a></li>
+      <li><a class="dropdown-item" href="#toothpaste">Colgate Toothpaste 100ml</a></li>
+      <li><a class="dropdown-item" href="#deodorant">Roll-on Deodorant</a></li>
+      <li><hr class="dropdown-divider"></li>
+
+      <li><h6 class="dropdown-header">Sweets &amp; Snacks</h6></li>
+      <li><a class="dropdown-item" href="#simba">Simba Chips 36g</a></li>
+      <li><a class="dropdown-item" href="#niknaks">NikNaks 30g</a></li>
+      <li><a class="dropdown-item" href="#barone">Bar One</a></li>
+      <li><a class="dropdown-item" href="#lunchbar">Lunch Bar</a></li>
+      <li><a class="dropdown-item" href="#chappies">Chappies (pack)</a></li>
+      <li><a class="dropdown-item" href="#fizzers">Fizzers</a></li>
+
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+
+  <section class="category" id="airtime">
+    <h3>1. Airtime, Data &amp; Vouchers</h3>
+    <p class="text-white-50">Buy any amount, for any network.</p>
+    <div class="row row-cols-2 row-cols-md-4 g-3">
+
+      <div class="col"><div class="card h-100" id="vodacom">
+        <img src="vodacom.jpg" class="product-img img-fluid" alt="Vodacom Airtime & Data">
+        <div class="card-body text-center">
+          <h6 class="card-title">Vodacom Airtime &amp; Data</h6>
+          <p class="card-text text-muted">Any amount</p>
+          <label class="mb-0 form-label small">Amount (R)</label>
+          <input type="number" class="form-control form-control-sm qty-input" min="5" step="5" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="mtn">
+        <img src="mtn.jpg" class="product-img img-fluid" alt="MTN Airtime & Data">
+        <div class="card-body text-center">
+          <h6 class="card-title">MTN Airtime &amp; Data</h6>
+          <p class="card-text text-muted">Any amount</p>
+          <label class="mb-0 form-label small">Amount (R)</label>
+          <input type="number" class="form-control form-control-sm qty-input" min="5" step="5" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="cellc">
+        <img src="cellc.jpg" class="product-img img-fluid" alt="Cell C Airtime & Data">
+        <div class="card-body text-center">
+          <h6 class="card-title">Cell C Airtime &amp; Data</h6>
+          <p class="card-text text-muted">Any amount</p>
+          <label class="mb-0 form-label small">Amount (R)</label>
+          <input type="number" class="form-control form-control-sm qty-input" min="5" step="5" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="telkom">
+        <img src="telkom.jpg" class="product-img img-fluid" alt="Telkom Airtime & Data">
+        <div class="card-body text-center">
+          <h6 class="card-title">Telkom Airtime &amp; Data</h6>
+          <p class="card-text text-muted">Any amount</p>
+          <label class="mb-0 form-label small">Amount (R)</label>
+          <input type="number" class="form-control form-control-sm qty-input" min="5" step="5" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="beverages">
+    <h3>2. Beverages</h3>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
+
+      <div class="col"><div class="card h-100" id="coke-330">
+        <img src="coke330.jpg" class="product-img img-fluid" alt="Coke 330ml">
+        <div class="card-body text-center">
+          <h6 class="card-title">Coke 330ml</h6><p class="card-text">R12.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="coke-2l">
+        <img src="coke22.jpg" class="product-img img-fluid" alt="Coke 2L">
+        <div class="card-body text-center">
+          <h6 class="card-title">Coke 2L</h6><p class="card-text">R28.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="fanta-330">
+        <img src="fanta330.jpg" class="product-img img-fluid" alt="Fanta 330ml">
+        <div class="card-body text-center">
+          <h6 class="card-title">Fanta 330ml</h6><p class="card-text">R12.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="fanta-1l">
+        <img src="fanta1.jpg" class="product-img img-fluid" alt="Fanta 1L">
+        <div class="card-body text-center">
+          <h6 class="card-title">Fanta 1L</h6><p class="card-text">R20.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="jive-15l">
+        <img src="jive1.jpg" class="product-img img-fluid" alt="Jive 1.5L">
+        <div class="card-body text-center">
+          <h6 class="card-title">Jive 1.5L</h6><p class="card-text">R25.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="jive-2l">
+        <img src="jive2.jpg" class="product-img img-fluid" alt="Jive 2L">
+        <div class="card-body text-center">
+          <h6 class="card-title">Jive 2L</h6><p class="card-text">R30.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="coffee-tea">
+    <h3>3. Coffee &amp; Tea</h3>
+    <div class="row row-cols-2 row-cols-md-3 g-3">
+
+      <div class="col"><div class="card h-100" id="ricoffy">
+        <img src="ricoffy.jpg" class="product-img img-fluid" alt="Ricoffy 250g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Ricoffy 250g</h6><p class="card-text">R55.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="jacobs">
+        <img src="jacobs.jpg" class="product-img img-fluid" alt="Jacobs Kronung 200g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Jacobs Kronung 200g</h6><p class="card-text">R65.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="freshpak">
+        <img src="freshpak.jpg" class="product-img img-fluid" alt="Freshpak Tea (100s)">
+        <div class="card-body text-center">
+          <h6 class="card-title">Freshpak Tea (100s)</h6><p class="card-text">R35.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="deli">
+    <h3>4. Deli</h3>
+    <div class="row row-cols-2 row-cols-md-3 g-3">
+
+      <div class="col"><div class="card h-100" id="polony">
+        <img src="polony.jpg" class="product-img img-fluid" alt="Polony 250g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Polony 250g</h6><p class="card-text">R20.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="cheese">
+        <img src="cheese.jpg" class="product-img img-fluid" alt="Cheese Slices 200g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Cheese Slices 200g</h6><p class="card-text">R32.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="canned-food">
+    <h3>5. Canned Food</h3>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
+
+      <div class="col"><div class="card h-100" id="baked-beans">
+        <img src="bakebeans.jpg" class="product-img img-fluid" alt="Baked Beans 410g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Baked Beans 410g</h6><p class="card-text">R14.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="pilchards">
+        <img src="pilchards.jpg" class="product-img img-fluid" alt="Pilchards 400g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Pilchards 400g</h6><p class="card-text">R22.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="corned-meat">
+        <img src="cornedmeat.jpg" class="product-img img-fluid" alt="Corned Meat 300g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Corned Meat 300g</h6><p class="card-text">R35.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="sweetcorn">
+        <img src="sweetcorn.jpg" class="product-img img-fluid" alt="Sweetcorn 410g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Sweetcorn 410g</h6><p class="card-text">R13.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="tom-onion">
+        <img src="tomato_and _onion.jpg" class="product-img img-fluid" alt="Tomato & Onion Mix 410g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Tomato &amp; Onion Mix 410g</h6><p class="card-text">R12.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="fruit-veg">
+    <h3>6. Fruit &amp; Veg</h3>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
+
+      <div class="col"><div class="card h-100" id="potatoes">
+        <img src="potatos.jpg" class="product-img img-fluid" alt="Potatoes 2kg">
+        <div class="card-body text-center">
+          <h6 class="card-title">Potatoes 2kg</h6><p class="card-text">R25.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="tomatoes">
+        <img src="tomatos.jpg" class="product-img img-fluid" alt="Tomatoes 1kg">
+        <div class="card-body text-center">
+          <h6 class="card-title">Tomatoes 1kg</h6><p class="card-text">R15.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="apples">
+        <img src="apples.jpg" class="product-img img-fluid" alt="Apples 1kg">
+        <div class="card-body text-center">
+          <h6 class="card-title">Apples 1kg</h6><p class="card-text">R22.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="lemons">
+        <img src="lemons.jpg" class="product-img img-fluid" alt="Lemons">
+        <div class="card-body text-center">
+          <h6 class="card-title">Lemons</h6><p class="card-text">R3.00 each</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="oranges">
+        <img src="oranges.jpg" class="product-img img-fluid" alt="Oranges 1kg">
+        <div class="card-body text-center">
+          <h6 class="card-title">Oranges 1kg</h6><p class="card-text">R18.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="avocado">
+        <img src="avocado.jpg" class="product-img img-fluid" alt="Avocado">
+        <div class="card-body text-center">
+          <h6 class="card-title">Avocado</h6><p class="card-text">R8.00 each</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="health-care">
+    <h3>7. Health Care</h3>
+    <div class="row row-cols-2 row-cols-md-4 g-3">
+
+      <div class="col"><div class="card h-100" id="plasters">
+        <img src="plasters.jpg" class="product-img img-fluid" alt="Plasters (20)">
+        <div class="card-body text-center">
+          <h6 class="card-title">Plasters (20)</h6><p class="card-text">R15.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="grandpa">
+        <img src="grandpa.jpg" class="product-img img-fluid" alt="Grandpa Powders (10s)">
+        <div class="card-body text-center">
+          <h6 class="card-title">Grandpa Powders (10s)</h6><p class="card-text">R12.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="panado">
+        <img src="panado.jpg" class="product-img img-fluid" alt="Panado Tablets (24s)">
+        <div class="card-body text-center">
+          <h6 class="card-title">Panado Tablets (24s)</h6><p class="card-text">R25.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="rennies">
+        <img src="rennie.jpg" class="product-img img-fluid" alt="Rennies (Heartburn)">
+        <div class="card-body text-center">
+          <h6 class="card-title">Rennies (Heartburn)</h6><p class="card-text">R18.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="household-cleaning">
+    <h3>8. Household Cleaning</h3>
+    <div class="row row-cols-2 row-cols-md-3 g-3">
+
+      <div class="col"><div class="card h-100" id="sunlight">
+        <img src="sunlight.jpg" class="product-img img-fluid" alt="Sunlight Dishwashing Liquid 750ml">
+        <div class="card-body text-center">
+          <h6 class="card-title">Sunlight Dishwashing Liquid 750ml</h6><p class="card-text">R28.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="handy-andy">
+        <img src="handy_andy.jpg" class="product-img img-fluid" alt="Handy Andy 750ml">
+        <div class="card-body text-center">
+          <h6 class="card-title">Handy Andy 750ml</h6><p class="card-text">R22.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="pets">
+    <h3>9. Pets</h3>
+    <div class="row row-cols-2 row-cols-md-3 g-3">
+
+      <div class="col"><div class="card h-100" id="dog-food">
+        <img src="dogfood.jpg" class="product-img img-fluid" alt="Dog Food 2kg">
+        <div class="card-body text-center">
+          <h6 class="card-title">Dog Food 2kg</h6><p class="card-text">R55.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="cat-food">
+        <img src="catfood.jpg" class="product-img img-fluid" alt="Cat Food 1.2kg">
+        <div class="card-body text-center">
+          <h6 class="card-title">Cat Food 1.2kg</h6><p class="card-text">R45.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="toiletries">
+    <h3>10. Toiletries</h3>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
+
+      <div class="col"><div class="card h-100" id="soap">
+        <img src="soap.jpg" class="product-img img-fluid" alt="Soap Bar">
+        <div class="card-body text-center">
+          <h6 class="card-title">Soap Bar</h6><p class="card-text">R8.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="face-cloth">
+        <img src="facecloth.jpg" class="product-img img-fluid" alt="Face Cloth">
+        <div class="card-body text-center">
+          <h6 class="card-title">Face Cloth</h6><p class="card-text">R10.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="toothbrush">
+        <img src="toothbrush.jpg" class="product-img img-fluid" alt="Toothbrush">
+        <div class="card-body text-center">
+          <h6 class="card-title">Toothbrush</h6><p class="card-text">R12.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="toothpaste">
+        <img src="toothpaste.jpg" class="product-img img-fluid" alt="Colgate Toothpaste 100ml">
+        <div class="card-body text-center">
+          <h6 class="card-title">Colgate Toothpaste 100ml</h6><p class="card-text">R18.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="deodorant">
+        <img src="rollon.jpg" class="product-img img-fluid" alt="Roll-on Deodorant">
+        <div class="card-body text-center">
+          <h6 class="card-title">Roll-on Deodorant</h6><p class="card-text">R25.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <section class="category" id="sweets-snacks">
+    <h3>11. Sweets &amp; Snacks</h3>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
+
+      <div class="col"><div class="card h-100" id="simba">
+        <img src="simba.jpg" class="product-img img-fluid" alt="Simba Chips 36g">
+        <div class="card-body text-center">
+          <h6 class="card-title">Simba Chips 36g</h6><p class="card-text">R12.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="niknaks">
+        <img src="nik_naks.jpg" class="product-img img-fluid" alt="NikNaks 30g">
+        <div class="card-body text-center">
+          <h6 class="card-title">NikNaks 30g</h6><p class="card-text">R10.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="barone">
+        <img src="bar_one.jpg" class="product-img img-fluid" alt="Bar One">
+        <div class="card-body text-center">
+          <h6 class="card-title">Bar One</h6><p class="card-text">R14.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="lunchbar">
+        <img src="lunchbar.jpg" class="product-img img-fluid" alt="Lunch Bar">
+        <div class="card-body text-center">
+          <h6 class="card-title">Lunch Bar</h6><p class="card-text">R14.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="chappies">
+        <img src="chappies.jpg" class="product-img img-fluid" alt="Chappies (pack)">
+        <div class="card-body text-center">
+          <h6 class="card-title">Chappies (pack)</h6><p class="card-text">R5.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+      <div class="col"><div class="card h-100" id="fizzers">
+        <img src="fizzers.jpg" class="product-img img-fluid" alt="Fizzers">
+        <div class="card-body text-center">
+          <h6 class="card-title">Fizzers</h6><p class="card-text">R6.00</p>
+          <input type="number" class="form-control form-control-sm qty-input" min="0" value="0">
+          <button class="btn btn-primary btn-sm mt-2">Buy</button>
+        </div></div></div>
+
+    </div>
+  </section>
+
+  <footer class="shop-footer">
+    <img src="Spaza_shop_logo.jpeg" alt="Brett's Corner Spaza Shop logo">
+    <form onsubmit="return false;">
+      <input type="text" class="form-control" placeholder="Your name">
+      <input type="tel" class="form-control" placeholder="Phone number">
+      <button type="submit" class="btn btn-primary">Contact us</button>
+    </form>
+    <p class="copyright">&copy; 2026 Brett's Corner Spaza Shop. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
